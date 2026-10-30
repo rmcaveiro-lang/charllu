@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Light × Charllu</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Proposta da Light para o Charllu: marca, conteúdo, mídia paga e eventos especiais.">
+<meta name="theme-color" content="#161310">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Light × Charllu">
+<meta property="og:description" content="A noite do Charllu, contada como ela merece.">
+<meta property="og:image" content="https://charllu.lightproducoes.ag/og-image.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="./salao.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<style>
+/* Layout: site de rolagem única no formato das propostas Light (menu fixo + faixas Grafite, Osso e Areia); Couro só como assinatura */
+:root{
+  --grafite:#161310; --grafite-2:#1e1a16; --osso:#F6F3EC; --areia:#E7DFD1; --couro:#8A5A33;
+  --on-dark-soft:rgba(231,223,209,.76); --on-light-soft:rgba(22,19,16,.72);
+  --line-dark:rgba(231,223,209,.16); --line-light:rgba(22,19,16,.16);
+  --display:'Cormorant Garamond','Cormorant',Georgia,'Times New Roman',serif;
+  --text:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --wrap:1280px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--grafite);color:var(--areia);font-family:var(--text);font-weight:300;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,p,ul,ol,figure{margin:0}
+ul{padding:0;list-style:none}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+::selection{background:var(--couro);color:var(--osso)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--grafite);z-index:60}
+
+.wrap{width:100%;max-width:calc(var(--wrap) + 80px);margin-inline:auto;padding-left:max(24px, env(safe-area-inset-left,0px));padding-right:max(24px, env(safe-area-inset-right,0px))}
+@media (min-width:768px){.wrap{padding-left:max(40px, env(safe-area-inset-left,0px));padding-right:max(40px, env(safe-area-inset-right,0px))}}
+
+/* faixas */
+.band{position:relative;padding-block:clamp(88px,11vw,152px)}
+.dark{background:var(--grafite);color:var(--areia)}
+.dark2{background:var(--grafite-2);color:var(--areia)}
+.light{background:var(--osso);color:var(--grafite)}
+.sand{background:var(--areia);color:var(--grafite)}
+
+/* tipografia */
+.display{font-family:var(--display);font-weight:500;font-size:clamp(52px,8.4vw,128px);line-height:.98;letter-spacing:-.015em;text-wrap:balance}
+.h2{font-family:var(--display);font-weight:500;font-size:clamp(40px,5.4vw,82px);line-height:1.02;letter-spacing:-.01em;text-wrap:balance}
+.h3{font-family:var(--display);font-weight:500;font-size:clamp(26px,2.5vw,38px);line-height:1.1}
+.lead{font-size:clamp(18px,1.6vw,22px);line-height:1.55;max-width:60ch}
+.p{font-size:17px;line-height:1.55}
+.label{font-family:var(--text);font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase}
+.num{font-family:var(--display);font-weight:500;font-variant-numeric:lining-nums tabular-nums}
+em{font-style:italic}
+.dark .h2,.dark .display,.dark .h3,.dark2 .h2,.dark2 .h3{color:var(--osso)}
+.dark .lead,.dark .p,.dark2 .lead,.dark2 .p{color:var(--on-dark-soft)}
+.light .lead,.light .p,.sand .lead,.sand .p{color:var(--on-light-soft)}
+.light .label,.sand .label{color:var(--couro)}
+.dark .label,.dark2 .label{color:var(--areia);opacity:.8}
+.italic-pad{padding-bottom:.06em}
+
+/* linha dupla: único grafismo do KV */
+.dl{width:120px;height:5px;border-top:1px solid var(--couro);border-bottom:1px solid var(--couro);transform-origin:left center}
+
+/* menu */
+.top{position:fixed;inset:0 0 auto;top:env(safe-area-inset-top,0px);z-index:50;height:72px;display:flex;align-items:center;background:rgba(22,19,16,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark);transition:background .3s}
+.top.solid{background:rgba(22,19,16,.97)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:baseline;gap:14px;text-decoration:none;white-space:nowrap}
+.brand .w{font-family:var(--display);font-weight:500;font-size:24px;letter-spacing:.32em;color:var(--osso)}
+.brand{align-items:center}
+.brand .sep{width:1px;height:26px;background:var(--line-dark);margin-inline:4px}
+.brand .client{height:30px;width:auto;max-width:none}
+.brand .x{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--osso)}
+.menu{display:flex;gap:26px;align-items:center}
+.menu a{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--on-dark-soft);padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap}
+.menu a:hover,.menu a.on{color:var(--osso);border-color:var(--couro)}
+.menu a:focus-visible,.btn:focus-visible,.burger:focus-visible{outline:2px solid var(--couro);outline-offset:4px}
+.burger{display:none;background:none;border:1px solid var(--line-dark);color:var(--osso);font:500 12px/1 var(--text);letter-spacing:.18em;text-transform:uppercase;padding:12px 14px;cursor:pointer}
+@media (max-width:1080px){
+  .burger{display:block}
+  .brand .x{display:none}
+  .menu{position:fixed;left:0;right:0;top:calc(72px + env(safe-area-inset-top,0px));flex-direction:column;align-items:flex-start;gap:0;background:var(--grafite);border-bottom:1px solid var(--line-dark);padding:8px max(24px, env(safe-area-inset-right,0px)) 20px max(24px, env(safe-area-inset-left,0px));transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .25s,transform .25s var(--ease),visibility 0s .25s}
+  .menu.open{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .25s var(--ease)}
+  .menu a{font-size:14px;padding:14px 0;width:100%;border-bottom:1px solid var(--line-dark)}
+}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:12px;font:500 13px/1 var(--text);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:18px 26px;border:1px solid var(--areia);color:var(--grafite);background:var(--areia);transition:background .25s,color .25s,transform .2s var(--ease);white-space:nowrap}
+.btn:hover{background:var(--osso)}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--areia)}
+.btn.ghost:hover{background:rgba(231,223,209,.1)}
+.btn .arr{font-family:var(--display);font-size:20px;letter-spacing:0;line-height:0}
+
+/* hero */
+.hero{position:relative;min-height:100dvh;display:flex;align-items:flex-end;padding-block:150px clamp(64px,9vh,110px);overflow:hidden}
+.hero .bg{position:absolute;inset:0}
+.hero .bg img{width:100%;height:100%;object-fit:cover}
+.hero .shade{position:absolute;inset:0;background:rgba(22,19,16,.62)}
+.hero .inner{position:relative;display:flex;flex-direction:column;gap:30px;max-width:1100px}
+.hero .lead{color:var(--areia);max-width:46ch}
+.cobrand{display:flex;align-items:center;gap:18px}
+.cobrand img{height:44px;width:auto;max-width:none}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.hero .meta{position:absolute;right:max(40px, env(safe-area-inset-right,0px));bottom:clamp(64px,9vh,110px);text-align:right;display:flex;flex-direction:column;gap:6px;color:var(--areia)}
+@media (max-width:900px){.hero .meta{display:none}}
+
+/* revelação ao rolar (conteúdo visível sem JS) */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv .dl,.js .dl.rv{transform:scaleX(0);transition:transform .8s var(--ease) .25s}
+.js .rv.in .dl,.js .dl.rv.in{transform:scaleX(1)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv,.js .rv .dl,.js .dl.rv{opacity:1;transform:none;transition:none}}
+
+/* ===== seções ===== */
+.head{display:flex;flex-direction:column;gap:22px;max-width:980px}
+.head + *{margin-top:clamp(48px,6vw,80px)}
+
+/* diagnóstico */
+.listen{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 56px}
+.listen .it{display:flex;flex-direction:column;gap:12px;padding-top:22px;border-top:1px solid var(--line-light)}
+@media (max-width:900px){.listen{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.listen{grid-template-columns:1fr;gap:32px}}
+
+/* oportunidade */
+.split{display:grid;grid-template-columns:1.05fr .95fr;min-height:720px}
+.split .txt{display:flex;flex-direction:column;justify-content:center;gap:34px;padding-block:clamp(80px,9vw,130px);padding-right:clamp(24px,5vw,80px)}
+.split .pic{position:relative;overflow:hidden}
+.split .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fig{display:flex;align-items:baseline;gap:22px;flex-wrap:wrap}
+.fig .num{font-size:clamp(54px,6vw,92px);line-height:1;color:var(--osso)}
+.fig .arr{font-family:var(--display);font-size:clamp(40px,4vw,64px);color:var(--couro)}
+.split-wrap{padding-left:max(24px, env(safe-area-inset-left,0px))}
+@media (min-width:768px){.split-wrap{padding-left:max(40px, env(safe-area-inset-left,0px))}}
+@media (min-width:1360px){.split-wrap{padding-left:calc((100vw - var(--wrap)) / 2)}}
+@media (max-width:900px){.split{grid-template-columns:1fr;min-height:0}.split .pic{min-height:360px;order:-1}.split .txt{padding-right:max(24px, env(safe-area-inset-right,0px))}}
+
+/* quem somos */
+.who{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(48px,8vw,120px);align-items:center}
+.who .left{display:flex;flex-direction:column;gap:30px}
+.stats{display:flex;flex-direction:column;gap:36px}
+.stat{padding-top:22px;border-top:1px solid var(--line-light)}
+.stat .num{display:block;font-size:clamp(88px,11vw,170px);line-height:.9;letter-spacing:-.03em}
+.stat .label{display:block;margin-top:14px}
+.who>*,.exp>*,.fronts>*,.deliv>*,.split>*{min-width:0}
+@media (max-width:900px){.who{grid-template-columns:1fr}.stats{flex-direction:row;gap:28px}.stat{flex:1;min-width:0}.stat .num{font-size:clamp(60px,17vw,120px)}}
+
+/* faixa de clientes */
+.marquee{overflow:hidden;border-top:1px solid var(--line-light);border-bottom:1px solid var(--line-light);padding-block:30px;margin-top:clamp(64px,8vw,104px)}
+.marquee .track{display:flex;width:max-content;animation:slide 70s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.marquee ul{display:flex;align-items:center;flex-shrink:0}
+.marquee li{display:flex;align-items:center;height:84px;padding-right:clamp(48px,5vw,80px);flex-shrink:0}
+.marquee img{width:auto;max-width:none;opacity:.82;transition:opacity .3s}
+.marquee li:hover img{opacity:1}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee .track{animation:none;flex-wrap:wrap;width:auto}.marquee ul[aria-hidden]{display:none}.marquee ul{flex-wrap:wrap}}
+
+/* método */
+.track5{position:relative;display:grid;grid-template-columns:repeat(5,1fr)}
+.track5 .ln{position:absolute;left:0;right:0;top:58px;height:1px;background:var(--couro)}
+.st{position:relative;display:flex;flex-direction:column;gap:10px;padding-right:28px}
+.st .flag{height:30px;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark-soft)}
+.st .flag.us{color:var(--osso)}
+.st .dot{width:13px;height:13px;border-radius:50%;background:var(--grafite);border:1px solid var(--couro);margin:21px 0 14px -6px}
+.st.lead2 .dot{background:var(--couro)}
+.st .n{font-family:var(--display);font-size:22px;color:var(--on-dark-soft)}
+@media (max-width:900px){
+  .track5{grid-template-columns:1fr;gap:28px;padding-left:28px}
+  .track5 .ln{left:6px;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .st{padding-right:0}.st .flag{height:auto}.st .flag:empty{display:none}
+  .st .dot{position:absolute;left:-28px;top:4px;margin:0}
+}
+
+/* leitura */
+.occ{display:grid;grid-template-columns:1fr 1fr;gap:56px clamp(48px,8vw,120px)}
+.oc{display:grid;grid-template-columns:44px 1fr;gap:8px 18px;align-items:baseline}
+.oc .n{font-family:var(--display);font-style:italic;font-size:22px;color:var(--couro);grid-row:span 2}
+.oc .h3{font-style:italic;font-weight:400;font-size:clamp(32px,3.4vw,52px)}
+@media (max-width:760px){.occ{grid-template-columns:1fr;gap:36px}}
+.after{margin-top:clamp(48px,6vw,72px);max-width:70ch}
+
+/* cases abertura */
+.cover{position:relative;min-height:88vh;display:flex;align-items:flex-end;padding-block:120px clamp(72px,9vw,120px);overflow:hidden}
+.cover .bg{position:absolute;inset:0}
+.cover .bg img{width:100%;height:100%;object-fit:cover}
+.cover .shade{position:absolute;inset:0;background:rgba(22,19,16,.58)}
+.cover .inner{position:relative;display:flex;flex-direction:column;gap:30px;max-width:1040px}
+.cover .lead{color:var(--areia)}
+
+/* case conteúdo */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pair figure{display:flex;flex-direction:column;gap:14px}
+.pair img{width:100%;aspect-ratio:1100/467;object-fit:cover}
+@media (max-width:760px){.pair{grid-template-columns:1fr}}
+
+/* publicações nas redes (formato do relatório JHSF) */
+.reels{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 24px;margin-top:clamp(56px,7vw,88px)}
+.reels .p{max-width:44ch}
+.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:24px;align-items:start}
+.ig{min-width:0;display:flex;justify-content:center}
+.ig .instagram-media{margin:0!important;min-width:0!important;width:100%!important;max-width:540px!important;border:0!important;padding:0!important;background:transparent!important;box-shadow:none!important}
+.ig iframe.instagram-media{background:var(--osso)!important;border:1px solid var(--line-light)!important;border-radius:0!important}
+.reel{position:relative;display:block;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--grafite-2);text-decoration:none}
+.reel img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;transition:transform 1s var(--ease)}
+.reel:hover img{transform:scale(1.06)}
+.reel .play{position:absolute;z-index:1;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;border:1px solid rgba(246,243,236,.8);display:grid;place-items:center;background:rgba(22,19,16,.4);transition:background .3s,border-color .3s}
+.reel .play::before{content:"";margin-left:4px;border-left:14px solid var(--osso);border-top:9px solid transparent;border-bottom:9px solid transparent}
+.reel:hover .play{background:var(--couro);border-color:var(--couro)}
+.reel span{position:absolute;z-index:1;left:0;right:0;bottom:0;padding:14px 14px 12px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--osso);background:rgba(22,19,16,.72)}
+.reel span small{display:block;margin-bottom:4px;font-size:11px;font-weight:400;letter-spacing:.04em;text-transform:none;color:var(--areia);opacity:.8}
+.reel:focus-visible{outline:2px solid var(--couro);outline-offset:3px}
+@media (max-width:1000px){.rgrid{grid-template-columns:repeat(6,minmax(300px,78vw));overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}.ig{scroll-snap-align:start}}
+
+/* case experiência */
+.exp{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(40px,6vw,88px);align-items:center}
+.exp .left{display:flex;flex-direction:column;gap:28px}
+.mosaic{display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:260px 260px;gap:12px}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+.mosaic .big{grid-row:span 2}
+@media (max-width:900px){.exp{grid-template-columns:1fr}.mosaic{grid-template-rows:200px 200px}}
+
+/* case mídia */
+.tri{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px;align-items:end}
+.tri figure{display:flex;flex-direction:column;gap:14px}
+.tri img{width:100%;object-fit:cover}
+.tri .f1 img{height:440px}.tri .f2 img{height:370px}.tri .f3 img{height:300px}
+@media (max-width:900px){.tri{grid-template-columns:1fr;align-items:start}.tri img{height:auto!important;max-height:420px}}
+
+/* além do esporte */
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;align-items:start}
+.four figure{display:flex;flex-direction:column;gap:12px}
+.four img{width:100%;height:360px;object-fit:cover}
+.four figure:nth-child(even){margin-top:56px}
+.four figure:nth-child(even) img{height:300px}
+.four .h3{font-size:clamp(24px,2vw,30px)}
+@media (max-width:1000px){.four{grid-template-columns:1fr 1fr}.four figure:nth-child(even){margin-top:0}.four img,.four figure:nth-child(even) img{height:260px}}
+@media (max-width:560px){.four{grid-template-columns:1fr}}
+
+/* ponte */
+.bridge{position:relative;padding-block:clamp(120px,14vw,200px);overflow:hidden}
+.bridge .bg{position:absolute;inset:0}
+.bridge .bg img{width:100%;height:100%;object-fit:cover}
+.bridge .shade{position:absolute;inset:0;background:rgba(22,19,16,.8)}
+.bridge .inner{position:relative;display:flex;flex-direction:column;gap:36px}
+.bridge .points{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;margin-top:12px}
+.bridge .points p{color:var(--areia)}
+@media (max-width:900px){.bridge .points{grid-template-columns:1fr 1fr}}
+
+/* frentes */
+.fronts{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(48px,8vw,120px)}
+.fronts .left{display:flex;flex-direction:column;gap:28px;position:sticky;top:120px;align-self:start}
+.rows{display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:64px 1fr 1.3fr;align-items:baseline;gap:20px;padding-block:26px}
+.row + .row{border-top:1px solid var(--line-light)}
+.row .num{font-size:28px;color:var(--couro)}
+@media (max-width:900px){.fronts{grid-template-columns:1fr}.fronts .left{position:static}.row{grid-template-columns:48px 1fr}.row .p{grid-column:2}}
+
+/* um mês */
+.tl{position:relative;display:grid;grid-template-columns:repeat(5,1fr)}
+.tl .ln{position:absolute;left:0;right:0;top:40px;height:1px;background:var(--couro)}
+.stop{display:flex;flex-direction:column;gap:10px;padding-right:28px}
+.stop .label{height:26px}
+.stop .tick{width:1px;height:22px;background:var(--couro);margin:2px 0 8px}
+@media (max-width:900px){.tl{grid-template-columns:1fr 1fr;gap:36px}.tl .ln,.stop .tick{display:none}.stop .label{height:auto}}
+.chk{margin-top:clamp(56px,6vw,80px);padding-top:28px;border-top:1px solid var(--line-dark);display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{font-size:13px;letter-spacing:.06em;border:1px solid rgba(231,223,209,.32);padding:9px 14px;color:var(--areia)}
+
+/* entregas */
+.deliv{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(48px,8vw,120px);align-items:end}
+.deliv .left{display:flex;flex-direction:column;gap:24px}
+.big20 .num{display:block;font-size:clamp(140px,19vw,280px);line-height:.8;letter-spacing:-.04em;color:var(--couro)}
+.big20 .h3{margin-top:18px}
+.cells{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 36px}
+.cell .num{display:block;font-size:clamp(46px,5vw,76px);line-height:.95}
+.cell .p{display:block;margin-top:8px;max-width:17ch}
+.cell.mark .num{color:var(--couro);font-style:italic}
+@media (max-width:900px){.deliv{grid-template-columns:1fr}.cells{grid-template-columns:1fr 1fr}}
+.foot-note{margin-top:clamp(40px,5vw,56px);max-width:80ch}
+
+/* eventos */
+.evband{height:clamp(260px,38vw,520px);overflow:hidden;position:relative}
+.evband img{width:100%;height:100%;object-fit:cover}
+.moments{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(32px,5vw,64px)}
+.mo{display:flex;flex-direction:column;gap:12px;padding-top:24px;border-top:1px solid var(--couro)}
+@media (max-width:860px){.moments{grid-template-columns:1fr}}
+
+/* mensuração */
+.funnel{display:flex;flex-direction:column;gap:12px}
+.bar{display:grid;grid-template-columns:150px 1fr 1.2fr;gap:28px;align-items:baseline;padding:30px 36px}
+.bar.b1{background:var(--osso);width:100%}
+.bar.b2{background:var(--osso);width:86%}
+.bar.b3{background:var(--grafite);color:var(--areia);width:72%}
+.bar.b3 .label{color:var(--areia)}.bar.b3 .h3{color:var(--osso)}.bar.b3 .p{color:var(--on-dark-soft)}
+@media (max-width:900px){.bar{grid-template-columns:1fr;gap:8px;width:100%!important}}
+
+/* investimento */
+.plans{display:grid;grid-template-columns:1fr 1.06fr 1fr;gap:24px;align-items:end}
+.plan{display:flex;flex-direction:column;gap:16px;padding:40px 36px 44px;border:1px solid var(--line-light)}
+.plan.rec{background:var(--grafite);color:var(--areia);border-color:var(--grafite);padding-block:52px 60px}
+.plan.rec .h3{color:var(--osso)}.plan.rec .p{color:var(--on-dark-soft)}
+.price{font-family:var(--display);font-weight:500;font-size:clamp(44px,4.4vw,64px);line-height:1;font-variant-numeric:lining-nums}
+.price small{font-family:var(--text);font-size:14px;font-weight:300;letter-spacing:.04em;margin-left:8px;opacity:.75}
+.plan.rec .price{color:var(--osso)}
+.plan ul{display:flex;flex-direction:column;gap:9px;font-size:16px;line-height:1.4;margin-top:6px}
+.plan li{display:flex;gap:12px;align-items:baseline}
+.plan li::before{content:"";flex:0 0 12px;height:1px;background:var(--couro);transform:translateY(-4px)}
+.tag{align-self:flex-start;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--couro);padding:7px 12px;color:var(--areia)}
+@media (max-width:960px){.plans{grid-template-columns:1fr;align-items:stretch}.plan.rec{order:-1}}
+
+/* 90 dias */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--couro)}
+.ph{display:flex;flex-direction:column;gap:12px;padding:34px 40px 0 0}
+.ph .num{font-size:clamp(36px,3.6vw,56px);line-height:1;color:var(--osso)}
+@media (max-width:860px){.phases{grid-template-columns:1fr}.ph{padding-right:0;padding-bottom:28px}}
+
+/* combinados */
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,120px)}
+.rules ul{display:flex;flex-direction:column;gap:14px;margin-top:22px;font-size:18px;color:var(--on-light-soft)}
+.rules li{display:flex;gap:16px;align-items:baseline}
+.rules li::before{content:"";flex:0 0 16px;height:1px;background:var(--couro);transform:translateY(-5px)}
+@media (max-width:760px){.rules{grid-template-columns:1fr}}
+
+/* próximos passos */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.stp{display:flex;flex-direction:column;gap:14px;padding:40px 36px 44px;background:var(--areia)}
+.stp .num{font-size:clamp(64px,6vw,96px);line-height:.85;color:var(--couro)}
+.stp.go{background:var(--grafite);color:var(--areia)}
+.stp.go .num{color:var(--areia)}.stp.go .h3{color:var(--osso)}.stp.go .p{color:var(--on-dark-soft)}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+
+/* fim */
+.end{position:relative;padding-block:clamp(120px,14vw,190px) clamp(48px,6vw,72px);overflow:hidden}
+.end .bg{position:absolute;inset:0}
+.end .bg img{width:100%;height:100%;object-fit:cover}
+.end .shade{position:absolute;inset:0;background:rgba(22,19,16,.74)}
+.end .inner{position:relative;display:flex;flex-direction:column;gap:36px}
+.contacts{display:flex;gap:clamp(32px,6vw,96px);flex-wrap:wrap;margin-top:24px}
+.contacts .v{font-size:clamp(18px,1.8vw,24px);color:var(--osso);margin-top:8px;user-select:text}
+.contacts a{text-decoration:none;border-bottom:1px solid rgba(231,223,209,.35)}
+.contacts a:hover{border-color:var(--couro)}
+.legal{position:relative;margin-top:clamp(80px,9vw,120px);padding-top:24px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--on-dark-soft)}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Light para Charllu, voltar ao início"><span class="w">LIGHT</span><span class="sep" aria-hidden="true"></span><img class="client" src="./logos/charllu-chapeu.png" alt="" width="139" height="130"><span class="x">Charllu</span></a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="menu" id="menu" aria-label="Seções">
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#light">A Light</a>
+      <a href="#cases">Cases</a>
+      <a href="#proposta">Proposta</a>
+      <a href="#entregas">Entregas</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#investimento">Investimento</a>
+      <a href="#proximos-passos">Próximos passos</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="inicio" aria-label="Início">
+  <div class="bg"><img src="./salao.jpg" alt="Salão do Charllu com mesas de madeira, bar iluminado e telão" fetchpriority="high"></div>
+  <div class="shade"></div>
+  <div class="wrap">
+    <div class="inner">
+      <div class="cobrand rv"><img src="./logos/charllu-chapeu.png" alt="Charllu" width="139" height="130"><p class="label">Proposta de comunicação · <span style="white-space:nowrap">L-0062-2026</span></p></div>
+      <h1 class="display rv italic-pad" style="--d:.08s">A noite do Charllu, <em>contada como ela merece.</em></h1>
+      <div class="dl rv" style="--d:.16s"></div>
+      <p class="lead rv" style="--d:.22s">Marca, conteúdo, mídia paga e eventos especiais, planejados a partir da agenda da casa.</p>
+      <div class="ctas rv" style="--d:.3s"><a class="btn" href="#diagnostico">Ver a proposta <span class="arr" aria-hidden="true">↓</span></a><a class="btn ghost" href="#investimento">Investimento</a></div>
+    </div>
+  </div>
+  <div class="meta"><span class="label">Outubro de 2026</span><span class="label">São Paulo</span></div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section class="band light" id="diagnostico">
+  <div class="wrap">
+    <div class="head">
+      <p class="label rv">O que ouvimos em 28 de outubro</p>
+      <h2 class="h2 rv">Começamos ouvindo.</h2>
+    </div>
+    <div class="listen">
+      <div class="it rv"><h3 class="h3">A agenda chega antes</h3><p class="p">A programação é conhecida com 15 a 21 dias. A comunicação ainda corre atrás dela.</p></div>
+      <div class="it rv" style="--d:.06s"><h3 class="h3">Stories em eco</h3><p class="p">Os stories repetem o feed, quando poderiam mostrar a noite acontecendo.</p></div>
+      <div class="it rv" style="--d:.12s"><h3 class="h3">Muitas vozes</h3><p class="p">Sem padrão visual, cada peça fala de um jeito e a marca perde força.</p></div>
+      <div class="it rv"><h3 class="h3">WhatsApp sobrecarregado</h3><p class="p">As dúvidas chegam no atendimento porque o perfil não responde antes.</p></div>
+      <div class="it rv" style="--d:.06s"><h3 class="h3">Mídia sem placar</h3><p class="p">Não sabemos hoje quantas mesas chegam pelas campanhas.</p></div>
+      <div class="it rv" style="--d:.12s"><h3 class="h3">Operação reativa</h3><p class="p">Pedidos avulsos, sem planejamento, e erros como legendas trocadas entre meses.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPORTUNIDADE -->
+<section class="dark" aria-label="A oportunidade">
+  <div class="split split-wrap">
+    <div class="txt">
+      <h2 class="h2 rv italic-pad">O Charllu já tem a experiência. <em>Falta a comunicação estar à altura dela.</em></h2>
+      <div class="dl rv"></div>
+      <div class="rv">
+        <div class="fig"><span class="num">500 mil</span><span class="arr" aria-hidden="true">›</span><span class="num">200 mil</span></div>
+        <p class="label" style="margin-top:12px">Alcance relatado na reunião</p>
+      </div>
+      <p class="p rv" style="max-width:46ch">A queda foi atribuída às eleições, mas sem período nem composição definidos. O primeiro passo do nosso trabalho é descobrir o porquê, com dados.</p>
+    </div>
+    <div class="pic"><img src="./bar.jpg" alt="Bar do Charllu com balcão iluminado, garrafas e telão" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- A LIGHT -->
+<section class="band sand" id="light">
+  <div class="wrap">
+    <div class="who">
+      <div class="left">
+        <h2 class="h2 rv">Marca, conteúdo, mídia e experiência no mesmo time.</h2>
+        <div class="dl rv"></div>
+        <p class="lead rv">Uma agência de comunicação e marketing que pensa o posicionamento, cria o conteúdo, opera a mídia e entrega a experiência ao vivo. Há mais de uma década, para varejo, indústria, saúde, hospitalidade e esporte.</p>
+      </div>
+      <div class="stats">
+        <div class="stat rv"><span class="num">+300</span><span class="label">Clientes atendidos</span></div>
+        <div class="stat rv" style="--d:.1s"><span class="num">+700</span><span class="label">Produções realizadas</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="marquee" role="region" aria-label="Clientes e parceiros">
+    <div class="track">
+      <ul><li><img src="./logos/hyundai.png" alt="Hyundai" style="height:58px" loading="lazy"></li><li><img src="./logos/casio.png" alt="Casio" style="height:36px" loading="lazy"></li><li><img src="./logos/black-decker.png" alt="Black+Decker" style="height:58px" loading="lazy"></li><li><img src="./logos/longines.png" alt="Longines" style="height:46px" loading="lazy"></li><li><img src="./logos/hospital-nove-de-julho.png" alt="Hospital Nove de Julho" style="height:74px" loading="lazy"></li><li><img src="./logos/cbh.png" alt="Confederação Brasileira de Hipismo" style="height:46px" loading="lazy"></li><li><img src="./logos/jsl.png" alt="JSL" style="height:46px" loading="lazy"></li><li><img src="./logos/omnibees.png" alt="Omnibees" style="height:58px" loading="lazy"></li><li><img src="./logos/momentive.png" alt="Momentive" style="height:30px" loading="lazy"></li><li><img src="./logos/astra.png" alt="Astra" style="height:46px" loading="lazy"></li><li><img src="./logos/trend.png" alt="Trend Operadora" style="height:46px" loading="lazy"></li><li><img src="./logos/sociedade-hipica-paulista.png" alt="Sociedade Hípica Paulista" style="height:74px" loading="lazy"></li><li><img src="./logos/infravias.png" alt="Infravias" style="height:46px" loading="lazy"></li><li><img src="./logos/pharma-inox.png" alt="Pharma Inox" style="height:36px" loading="lazy"></li><li><img src="./logos/xtc-longines.png" alt="XTC Longines" style="height:74px" loading="lazy"></li><li><img src="./logos/laquila.png" alt="Laquila" style="height:30px" loading="lazy"></li><li><img src="./logos/multicoisas.png" alt="Multicoisas" style="height:36px" loading="lazy"></li><li><img src="./logos/fph.png" alt="FPH" style="height:74px" loading="lazy"></li><li><img src="./logos/pro-tune.png" alt="Pro Tune" style="height:74px" loading="lazy"></li><li><img src="./logos/doda.png" alt="Doda Training Center" style="height:58px" loading="lazy"></li></ul>
+      <ul aria-hidden="true"><li><img src="./logos/hyundai.png" alt="" style="height:58px" loading="lazy"></li><li><img src="./logos/casio.png" alt="" style="height:36px" loading="lazy"></li><li><img src="./logos/black-decker.png" alt="" style="height:58px" loading="lazy"></li><li><img src="./logos/longines.png" alt="" style="height:46px" loading="lazy"></li><li><img src="./logos/hospital-nove-de-julho.png" alt="" style="height:74px" loading="lazy"></li><li><img src="./logos/cbh.png" alt="" style="height:46px" loading="lazy"></li><li><img src="./logos/jsl.png" alt="" style="height:46px" loading="lazy"></li><li><img src="./logos/omnibees.png" alt="" style="height:58px" loading="lazy"></li><li><img src="./logos/momentive.png" alt="" style="height:30px" loading="lazy"></li><li><img src="./logos/astra.png" alt="" style="height:46px" loading="lazy"></li><li><img src="./logos/trend.png" alt="" style="height:46px" loading="lazy"></li><li><img src="./logos/sociedade-hipica-paulista.png" alt="" style="height:74px" loading="lazy"></li><li><img src="./logos/infravias.png" alt="" style="height:46px" loading="lazy"></li><li><img src="./logos/pharma-inox.png" alt="" style="height:36px" loading="lazy"></li><li><img src="./logos/xtc-longines.png" alt="" style="height:74px" loading="lazy"></li><li><img src="./logos/laquila.png" alt="" style="height:30px" loading="lazy"></li><li><img src="./logos/multicoisas.png" alt="" style="height:36px" loading="lazy"></li><li><img src="./logos/fph.png" alt="" style="height:74px" loading="lazy"></li><li><img src="./logos/pro-tune.png" alt="" style="height:74px" loading="lazy"></li><li><img src="./logos/doda.png" alt="" style="height:58px" loading="lazy"></li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section class="band dark" aria-label="Como pensamos">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h2 rv">Marketing começa antes do post.</h2>
+    </div>
+    <div class="track5">
+      <div class="ln" aria-hidden="true"></div>
+      <div class="st lead2 rv"><span class="flag us">A Light começa aqui</span><span class="dot" aria-hidden="true"></span><span class="n">01</span><h3 class="h3">Entender</h3><p class="p">Negócio, público, ocasiões de consumo e concorrência.</p></div>
+      <div class="st lead2 rv" style="--d:.06s"><span class="flag"></span><span class="dot" aria-hidden="true"></span><span class="n">02</span><h3 class="h3">Posicionar</h3><p class="p">O que a marca é, para quem e por que ela é a escolha.</p></div>
+      <div class="st rv" style="--d:.12s"><span class="flag"></span><span class="dot" aria-hidden="true"></span><span class="n">03</span><h3 class="h3">Expressar</h3><p class="p">Tom de voz, identidade visual e linha editorial.</p></div>
+      <div class="st rv" style="--d:.18s"><span class="flag">A maioria começa aqui</span><span class="dot" aria-hidden="true"></span><span class="n">04</span><h3 class="h3">Ativar</h3><p class="p">Conteúdo, mídia paga e experiências ao vivo.</p></div>
+      <div class="st rv" style="--d:.24s"><span class="flag"></span><span class="dot" aria-hidden="true"></span><span class="n">05</span><h3 class="h3">Medir</h3><p class="p">Resultado de negócio, não só curtida.</p></div>
+    </div>
+    <p class="lead rv after">Quem pula as duas primeiras etapas produz muito e comunica pouco. É o que acontece quando a operação vive de pedidos avulsos.</p>
+  </div>
+</section>
+
+<!-- LEITURA -->
+<section class="band light" aria-label="Primeira leitura do Charllu">
+  <div class="wrap">
+    <div class="head">
+      <p class="label rv">Primeira leitura · hipóteses a validar</p>
+      <h2 class="h2 rv">Por que escolher o Charllu hoje à noite?</h2>
+    </div>
+    <div class="occ">
+      <div class="oc rv"><span class="n">i</span><h3 class="h3">A noite com música</h3><p class="p">Amigos e casais que escolhem pela atração da semana.</p></div>
+      <div class="oc rv" style="--d:.06s"><span class="n">ii</span><h3 class="h3">A celebração</h3><p class="p">Aniversários e grupos que precisam de reserva e estrutura.</p></div>
+      <div class="oc rv"><span class="n">iii</span><h3 class="h3">A família</h3><p class="p">Pais que vêm porque o espaço kids resolve a noite.</p></div>
+      <div class="oc rv" style="--d:.06s"><span class="n">iv</span><h3 class="h3">A mesa</h3><p class="p">Quem volta pelo prato, pelo drink e pelo atendimento.</p></div>
+    </div>
+    <p class="lead rv after">Cada ocasião pede uma mensagem, um formato e um momento de mídia diferentes. O diagnóstico confirma quais pesam mais antes de definirmos o posicionamento.</p>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cover dark" id="cases">
+  <div class="bg"><img src="./domo.jpg" alt="Show sob a cúpula no Prêmio Hipismo Brasil 2024, produção Light" loading="lazy"></div>
+  <div class="shade"></div>
+  <div class="wrap">
+    <div class="inner">
+      <p class="label rv">Cases</p>
+      <h2 class="display rv">Prova antes de promessa.</h2>
+      <div class="dl rv"></div>
+      <p class="lead rv">Conteúdo, mídia, hospitalidade e experiência de marca. Começamos pelo cliente mais exigente do nosso portfólio, a Confederação Brasileira de Hipismo, e seguimos por gastronomia, varejo e celebração.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band light" aria-label="Case CBH, conteúdo em tempo real">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h2 rv">Conteúdo no ritmo do resultado.</h2>
+      <p class="lead rv">Para a CBH, peças preparadas antes da prova e publicadas no minuto da conquista. O mesmo método serve à atração da noite.</p>
+    </div>
+    <div class="pair">
+      <figure class="rv"><img src="./medalhas.jpg" alt="Posts da CBH para as Olimpíadas de Paris 2024 com Stephan Barcha" loading="lazy" width="1100" height="467"><figcaption class="p">Olimpíadas de Paris 2024, cobertura da equipe brasileira</figcaption></figure>
+      <figure class="rv" style="--d:.08s"><img src="./indoor.jpg" alt="Posts do Longines São Paulo Horse Show" loading="lazy" width="1100" height="467"><figcaption class="p">Longines São Paulo Horse Show, feed editorial</figcaption></figure>
+    </div>
+    <div class="reels">
+      <h3 class="h3 rv">Nas redes</h3>
+      <p class="p rv">Publicações criadas pela Light para os perfis dos clientes. Dê o play direto aqui.</p>
+    </div>
+    <div class="rgrid">
+      <div class="ig rv" style="--d:0.00s">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNjUZCCh8l5/?utm_source=ig_embed" data-instgrm-version="14">
+          <a class="reel" href="https://www.instagram.com/p/DNjUZCCh8l5/" target="_blank" rel="noopener" aria-label="Ver a publicação 1 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
+        </blockquote>
+      </div>
+      <div class="ig rv" style="--d:0.05s">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdewbKfIBdt/?utm_source=ig_embed" data-instgrm-version="14">
+          <a class="reel" href="https://www.instagram.com/p/DdewbKfIBdt/" target="_blank" rel="noopener" aria-label="Ver a publicação 2 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
+        </blockquote>
+      </div>
+      <div class="ig rv" style="--d:0.10s">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNqUwLWN2qA/?utm_source=ig_embed" data-instgrm-version="14">
+          <a class="reel" href="https://www.instagram.com/p/DNqUwLWN2qA/" target="_blank" rel="noopener" aria-label="Ver a publicação 3 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
+        </blockquote>
+      </div>
+      <div class="ig rv" style="--d:0.15s">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DbB9O-HFudq/?utm_source=ig_embed" data-instgrm-version="14">
+          <a class="reel" href="https://www.instagram.com/p/DbB9O-HFudq/?img_index=2" target="_blank" rel="noopener" aria-label="Ver a publicação 4 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
+        </blockquote>
+      </div>
+      <div class="ig rv" style="--d:0.20s">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DLvoLj8y_vL/?utm_source=ig_embed" data-instgrm-version="14">
+          <a class="reel" href="https://www.instagram.com/p/DLvoLj8y_vL/?img_index=1" target="_blank" rel="noopener" aria-label="Ver a publicação 5 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
+        </blockquote>
+      </div>
+      <div class="ig rv" style="--d:0.25s">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DcV1T96tbs5/?utm_source=ig_embed" data-instgrm-version="14">
+          <a class="reel" href="https://www.instagram.com/p/DcV1T96tbs5/" target="_blank" rel="noopener" aria-label="Ver a publicação 6 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark2" aria-label="Case CBH, hospitalidade e experiência">
+  <div class="wrap">
+    <div class="exp">
+      <div class="left">
+        <h2 class="h2 rv">Uma noite de gala, do convite à última taça.</h2>
+        <div class="dl rv"></div>
+        <p class="lead rv">Prêmio Hipismo Brasil 2023 e 2024: cenografia, gastronomia, show, hospitalidade e o conteúdo da noite, produzidos pelo mesmo time.</p>
+      </div>
+      <div class="mosaic rv">
+        <img class="big" src="./salaoev.jpg" alt="Salão do Prêmio Hipismo Brasil montado, mesas e luz baixa" loading="lazy">
+        <img src="./tacas.jpg" alt="Mesa posta com taças e arranjo" loading="lazy">
+        <img src="./palco.jpg" alt="Premiação no palco com patrocinadores ao fundo" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="band sand" aria-label="Cases além do esporte">
+  <div class="wrap">
+    <div class="head">
+      <p class="label rv">Além do esporte</p>
+      <h2 class="h2 rv">Gastronomia, varejo e celebração.</h2>
+    </div>
+    <div class="four">
+      <figure class="rv"><img src="./vinho.jpg" alt="Entrada do Grande Festival do Vinho Brasileiro" loading="lazy"><h3 class="h3">Festival do Vinho Brasileiro</h3><p class="p">Vini Braexpo, Rio de Janeiro. Produção 360°.</p></figure>
+      <figure class="rv" style="--d:.06s"><img src="./bd.jpg" alt="Estande da Black+Decker na Eletrolar" loading="lazy"><h3 class="h3">Black+Decker</h3><p class="p">Eletrolar. Estande e serviços.</p></figure>
+      <figure class="rv" style="--d:.12s"><img src="./gree.jpg" alt="Ativação da Gree na Arena Verão 2025" loading="lazy"><h3 class="h3">Gree</h3><p class="p">Arena Verão 2025. Ativação de marca.</p></figure>
+      <figure class="rv" style="--d:.18s"><img src="./festa.jpg" alt="Mesa de gastronomia em festa de aniversário" loading="lazy"><h3 class="h3">Aniversário de 60 anos</h3><p class="p">Celebração privada. Gastronomia.</p></figure>
+    </div>
+  </div>
+</section>
+
+<section class="bridge dark" aria-label="E o Charllu com isso">
+  <div class="bg"><img src="./salao.jpg" alt="" loading="lazy"></div>
+  <div class="shade"></div>
+  <div class="wrap">
+    <div class="inner">
+      <h2 class="display rv italic-pad">As marcas mudam. <em>O método é o mesmo.</em></h2>
+      <div class="dl rv"></div>
+      <div class="points">
+        <p class="p rv">Calendário antecipado, sem correria.</p>
+        <p class="p rv" style="--d:.06s">Captação com direção, não registro aleatório.</p>
+        <p class="p rv" style="--d:.12s">Publicação no momento certo, sem erro.</p>
+        <p class="p rv" style="--d:.18s">Números lidos com honestidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPOSTA -->
+<section class="band light" id="proposta">
+  <div class="wrap">
+    <div class="fronts">
+      <div class="left">
+        <p class="label rv">A proposta</p>
+        <h2 class="h2 rv">Cinco frentes, um só calendário.</h2>
+        <div class="dl rv"></div>
+        <p class="lead rv">Tudo nasce da programação da casa: o que entra na agenda vira conteúdo, mídia e, quando é especial, cobertura.</p>
+      </div>
+      <div class="rows">
+        <div class="row rv"><span class="num">01</span><h3 class="h3">Marca</h3><p class="p">Diagnóstico, públicos, tom de voz e padrão visual.</p></div>
+        <div class="row rv"><span class="num">02</span><h3 class="h3">Conteúdo</h3><p class="p">Agenda, reels, stories e captação na casa.</p></div>
+        <div class="row rv"><span class="num">03</span><h3 class="h3">Mídia paga</h3><p class="p">Campanhas ligadas à agenda, reservas e aniversários.</p></div>
+        <div class="row rv"><span class="num">04</span><h3 class="h3">Eventos</h3><p class="p">Cobertura antes, durante e depois das noites especiais.</p></div>
+        <div class="row rv"><span class="num">05</span><h3 class="h3">Mensuração</h3><p class="p">Relatório mensal e origem das reservas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" aria-label="Um mês no Charllu">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h2 rv">Um mês no Charllu, sem correria.</h2>
+    </div>
+    <div class="tl">
+      <div class="ln" aria-hidden="true"></div>
+      <div class="stop rv"><span class="label">Dia 20</span><span class="tick" aria-hidden="true"></span><h3 class="h3">Plano do mês</h3><p class="p">Calendário editorial e de mídia aprovado.</p></div>
+      <div class="stop rv" style="--d:.06s"><span class="label">A cada 15 dias</span><span class="tick" aria-hidden="true"></span><h3 class="h3">Agenda recebida</h3><p class="p">Programação confirmada pela casa.</p></div>
+      <div class="stop rv" style="--d:.12s"><span class="label">Quarta</span><span class="tick" aria-hidden="true"></span><h3 class="h3">Semana pronta</h3><p class="p">Peças da semana seguinte para aprovação.</p></div>
+      <div class="stop rv" style="--d:.18s"><span class="label">Segunda</span><span class="tick" aria-hidden="true"></span><h3 class="h3">Agenda no ar</h3><p class="p">E chamada diária da atração, de terça a domingo.</p></div>
+      <div class="stop rv" style="--d:.24s"><span class="label">Dia 10</span><span class="tick" aria-hidden="true"></span><h3 class="h3">Relatório</h3><p class="p">Resultados lidos e próximos passos.</p></div>
+    </div>
+    <div class="chk rv">
+      <p class="p" style="color:var(--areia)">Checado antes de publicar</p>
+      <div class="chips"><span>Data</span><span>Dia da semana</span><span>Atração</span><span>Horário</span><span>Preço</span><span>Legenda</span><span>Aprovação por escrito</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREGAS -->
+<section class="band light" id="entregas">
+  <div class="wrap">
+    <div class="deliv">
+      <div class="left">
+        <h2 class="h2 rv">Presença todos os dias da casa.</h2>
+        <p class="p rv">Volumes mensais do cenário recomendado.</p>
+        <div class="big20 rv"><span class="num">20</span><h3 class="h3">chamadas diárias da atração</h3></div>
+      </div>
+      <div class="cells">
+        <div class="cell rv"><span class="num">4</span><span class="p">reels e vídeos curtos</span></div>
+        <div class="cell rv" style="--d:.05s"><span class="num">8</span><span class="p">sequências de stories próprias</span></div>
+        <div class="cell rv" style="--d:.1s"><span class="num">4 a 5</span><span class="p">agendas semanais no feed</span></div>
+        <div class="cell rv"><span class="num">8</span><span class="p">peças estáticas e carrosséis</span></div>
+        <div class="cell rv" style="--d:.05s"><span class="num">1</span><span class="p">sessão de captação na casa</span></div>
+        <div class="cell rv" style="--d:.1s"><span class="num">5</span><span class="p">campanhas ativas ao mesmo tempo</span></div>
+        <div class="cell rv"><span class="num">12</span><span class="p">variações criativas para anúncios</span></div>
+        <div class="cell mark rv" style="--d:.05s"><span class="num">1</span><span class="p">cobertura de evento especial</span></div>
+        <div class="cell rv" style="--d:.1s"><span class="num">2</span><span class="p">reuniões de alinhamento</span></div>
+      </div>
+    </div>
+    <p class="p rv foot-note">Reel de 15 a 60 segundos, carrossel de até 8 cards, sequência de stories de até 5 telas e captação de até 4 horas. Peças não usadas no mês não acumulam.</p>
+  </div>
+</section>
+
+<!-- EVENTOS -->
+<section class="dark" id="eventos">
+  <div class="evband"><img src="./jantar.jpg" alt="Convidados à mesa durante uma noite de evento" loading="lazy"></div>
+  <div class="band" style="padding-top:clamp(64px,7vw,96px)">
+    <div class="wrap">
+      <div class="head">
+        <p class="label rv">Eventos especiais</p>
+        <h2 class="h2 rv">Uma noite especial vira semanas de conteúdo.</h2>
+      </div>
+      <div class="moments">
+        <div class="mo rv"><span class="label">Antes</span><h3 class="h3">Expectativa</h3><p class="p">Briefing, chamadas no feed e stories, roteiro de captação e mídia a partir de 7 a 10 dias antes.</p></div>
+        <div class="mo rv" style="--d:.08s"><span class="label">Durante</span><h3 class="h3">Presença</h3><p class="p">Até 5 horas no local, foto e vídeo vertical, até 10 stories publicados em tempo real.</p></div>
+        <div class="mo rv" style="--d:.16s"><span class="label">Depois</span><h3 class="h3">Memória</h3><p class="p">40 fotos tratadas, vídeo de melhores momentos e 3 cortes para o feed e os anúncios.</p></div>
+      </div>
+      <p class="p rv foot-note">Prévia de 10 fotos em até 24 horas. Produção audiovisual ampliada e transmissão ao vivo podem ser contratadas à parte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENSURAÇÃO -->
+<section class="band sand" aria-label="Mensuração">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h2 rv">Do alcance à mesa reservada.</h2>
+    </div>
+    <div class="funnel">
+      <div class="bar b1 rv"><span class="label">Conteúdo</span><h3 class="h3">Quem viu e se interessou</h3><p class="p">Alcance orgânico e pago, engajamento, salvamentos e compartilhamentos.</p></div>
+      <div class="bar b2 rv" style="--d:.08s"><span class="label">Mídia</span><h3 class="h3">Quanto custou cada contato</h3><p class="p">Custo por mil impressões e por conversa no WhatsApp.</p></div>
+      <div class="bar b3 rv" style="--d:.16s"><span class="label">Negócio</span><h3 class="h3">Quem veio de fato</h3><p class="p">Conversas, reservas e comparecimento por origem.</p></div>
+    </div>
+    <p class="p rv foot-note">Linha de base nos primeiros 30 dias. Origem marcada em cada contato desde o primeiro mês. Avaliamos o cruzamento com o sistema de comandas, sem integração no escopo inicial.</p>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section class="band light" id="investimento">
+  <div class="wrap">
+    <div class="head">
+      <p class="label rv">Investimento</p>
+      <h2 class="h2 rv">Três formatos. Recomendamos o Estratégico.</h2>
+    </div>
+    <div class="plans">
+      <div class="plan rv">
+        <h3 class="h3">Essencial</h3>
+        <p class="price">R$ 3.500<small>por mês</small></p>
+        <p class="p">A base organizada, sem cobertura incluída.</p>
+        <ul><li>4 reels por mês</li><li>Repost de stories</li><li>1 captação na casa</li><li>Até 3 campanhas e 6 variações</li><li>Coberturas à parte</li></ul>
+      </div>
+      <div class="plan rec rv" style="--d:.08s">
+        <span class="tag">Recomendado</span>
+        <h3 class="h3">Estratégico</h3>
+        <p class="price">R$ 4.500<small>por mês</small></p>
+        <p class="p">Operação integrada com eventos incluídos.</p>
+        <ul><li>4 reels por mês</li><li>Repost de stories</li><li>1 captação na casa</li><li>Até 5 campanhas e 12 variações</li><li>1 cobertura por mês</li></ul>
+      </div>
+      <div class="plan rv" style="--d:.16s">
+        <h3 class="h3">Ampliado</h3>
+        <p class="price">R$ 7.500<small>por mês</small></p>
+        <p class="p">Mais presença, mais testes, LED incluído.</p>
+        <ul><li>12 reels por mês</li><li>16 sequências de stories</li><li>4 captações na casa</li><li>Até 8 campanhas e 20 variações</li><li>2 coberturas e 7 vídeos de LED</li></ul>
+      </div>
+    </div>
+    <p class="p rv foot-note">Todos incluem a implantação, a agenda semanal, a chamada diária da atração e o relatório mensal. A verba de mídia é paga pelo Charllu diretamente à Meta, fora dos valores acima.</p>
+  </div>
+</section>
+
+<section class="band dark" aria-label="Os primeiros 90 dias">
+  <div class="wrap">
+    <div class="head">
+      <p class="label rv">Os primeiros 90 dias</p>
+      <h2 class="h2 rv">Organizar, executar, ajustar.</h2>
+    </div>
+    <div class="phases">
+      <div class="ph rv"><span class="num">01 a 07 dias</span><h3 class="h3">Diagnóstico e implantação</h3><p class="p">Acessos, diagnóstico, públicos, tom de voz, modelos visuais e linha de base. Conteúdo já no ar desde o primeiro ciclo.</p></div>
+      <div class="ph rv" style="--d:.08s"><span class="num">07 a 15 dias</span><h3 class="h3">Operação completa</h3><p class="p">Calendário quinzenal rodando, campanhas reorganizadas e primeira cobertura de evento.</p></div>
+      <div class="ph rv" style="--d:.16s"><span class="num">30 a 60 dias</span><h3 class="h3">Otimização</h3><p class="p">Leitura dos testes, ajuste de verba e de formatos, revisão do cenário contratado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band sand" aria-label="Combinados">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h2 rv">Regras claras desde o primeiro dia.</h2>
+    </div>
+    <div class="rules">
+      <div class="rv"><h3 class="h3">Como trabalhamos</h3><ul><li>Aprovação sempre por escrito</li><li>Até 2 rodadas de revisão por peça</li><li>Erro nosso é corrigido sem custo</li><li>2 ajustes de urgência por mês incluídos</li><li>Pedidos fora do escopo orçados antes</li></ul></div>
+      <div class="rv" style="--d:.08s"><h3 class="h3">Fora do escopo inicial</h3><ul><li>Verba de mídia e rebranding de logotipo</li><li>Atendimento no WhatsApp e reservas</li><li>Integração de sistemas e site</li><li>Transmissão ao vivo e audiovisual ampliado</li><li>Influenciadores e trilhas licenciadas</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="band light" id="proximos-passos">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h2 rv">Três decisões para começar.</h2>
+    </div>
+    <div class="steps">
+      <div class="stp rv"><span class="num">1</span><h3 class="h3">Escolher o cenário</h3><p class="p">E confirmar quantos eventos especiais estão previstos.</p></div>
+      <div class="stp rv" style="--d:.08s"><span class="num">2</span><h3 class="h3">Liberar os acessos</h3><p class="p">Instagram, Facebook, Meta Business e os relatórios atuais.</p></div>
+      <div class="stp go rv" style="--d:.16s"><span class="num">3</span><h3 class="h3">Marcar o kick-off</h3><p class="p">Uma conversa com sócios e equipe de salão para ouvir a casa por dentro.</p></div>
+    </div>
+    <p class="lead rv after">Com os acessos liberados, o primeiro ciclo de conteúdo entra no ar em até 5 dias.</p>
+  </div>
+</section>
+
+<section class="end dark" aria-label="Contato">
+  <div class="bg"><img src="./bar.jpg" alt="" loading="lazy"></div>
+  <div class="shade"></div>
+  <div class="wrap">
+    <div class="inner">
+      <h2 class="display rv italic-pad">Vamos contar <em>a próxima noite juntos?</em></h2>
+      <div class="dl rv"></div>
+      <div class="contacts rv">
+        <div><span class="label">WhatsApp</span><p class="v"><a href="https://wa.me/5511991144202" target="_blank" rel="noopener">(11) 9 9114-4202</a></p></div>
+        <div><span class="label">E-mail</span><p class="v">contato@lightproducoes.ag</p></div>
+        <div><span class="label">Instagram</span><p class="v"><a href="https://www.instagram.com/lightproducoes.ag/" target="_blank" rel="noopener">@lightproducoes.ag</a></p></div>
+      </div>
+    </div>
+    <div class="legal"><span>Light · Proposta L-0062-2026 para o Charllu</span><span>Documento confidencial. São Paulo, outubro de 2026.</span></div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var top=document.getElementById('top'), burger=document.getElementById('burger'), menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){ var o=menu.classList.toggle('open'); burger.setAttribute('aria-expanded',String(o)); });
+  [].forEach.call(menu.querySelectorAll('a'),function(a){ a.addEventListener('click',function(){ menu.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }); });
+  var hero=document.getElementById('inicio');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(e){ top.classList.toggle('solid',!e.isIntersecting); }); },{rootMargin:'-80px 0px 0px 0px'}).observe(hero);
+    var rv=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); rv.unobserve(e.target); } }); },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+    [].forEach.call(document.querySelectorAll('.rv'),function(el){ rv.observe(el); });
+    var links={}; [].forEach.call(menu.querySelectorAll('a'),function(a){ links[a.getAttribute('href').slice(1)]=a; });
+    var spy=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ for(var k in links) links[k].classList.toggle('on',k===e.target.id); } }); },{rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(links).forEach(function(id){ var s=document.getElementById(id); if(s) spy.observe(s); });
+  } else {
+    [].forEach.call(document.querySelectorAll('.rv'),function(el){ el.classList.add('in'); });
+  }
+  setTimeout(function(){ [].forEach.call(document.querySelectorAll('#inicio .rv'),function(el){ el.classList.add('in'); }); },30);
+})();
+</script>
+<script async src="https://www.instagram.com/embed.js"></script>
+</body>
+</html>
