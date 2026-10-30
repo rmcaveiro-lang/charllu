@@ -210,6 +210,13 @@ em{font-style:italic}
 .ig-frame{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--grafite)}
 .ig-clip{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);aspect-ratio:var(--r,4/5);overflow:hidden}
 .ig-frame iframe{position:absolute;left:0;top:-55px;width:100%;height:calc(100% + 760px);border:0;display:block}
+.ig-cover{position:absolute;inset:0;display:block}
+.ig-cover img{width:100%;height:100%;max-width:none;object-fit:cover;transition:transform 1s var(--ease)}
+.ig-cover:hover img{transform:scale(1.04)}
+.ig-play{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(246,243,236,.85);display:grid;place-items:center;transition:background .3s}
+.ig-play::before{content:"";margin-left:5px;border-left:18px solid var(--grafite);border-top:11px solid transparent;border-bottom:11px solid transparent}
+.ig-cover:hover .ig-play{background:var(--osso)}
+.ig-cover:focus-visible{outline:2px solid var(--couro);outline-offset:3px}
 .ig figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:12px;border-top:1px solid var(--line-light)}
 .ig figcaption span{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--on-light-soft)}
 .ig figcaption b{display:block;font-family:var(--display);font-size:20px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--grafite);margin-bottom:4px}
@@ -245,11 +252,9 @@ em{font-style:italic}
 /* além do esporte */
 .four{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;align-items:start}
 .four figure{display:flex;flex-direction:column;gap:12px}
-.four img{width:100%;height:360px;object-fit:cover}
-.four figure:nth-child(even){margin-top:56px}
-.four figure:nth-child(even) img{height:300px}
+.four img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
 .four .h3{font-size:clamp(24px,2vw,30px)}
-@media (max-width:1000px){.four{grid-template-columns:1fr 1fr}.four figure:nth-child(even){margin-top:0}.four img,.four figure:nth-child(even) img{height:260px}}
+@media (max-width:1000px){.four{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.four{grid-template-columns:1fr}}
 
 /* ponte */
@@ -522,7 +527,7 @@ em{font-style:italic}
         <figcaption><span><b>Longines SP Horse Show</b>Reel</span><a href="https://www.instagram.com/p/DNjUZCCh8l5/" target="_blank" rel="noopener">Abrir no Instagram <span aria-hidden="true">↗</span></a></figcaption>
       </figure>
       <figure class="ig rv" style="--d:0.05s">
-        <div class="ig-frame"><div class="ig-clip"><iframe src="https://www.instagram.com/p/DdewbKfIBdt/embed/" title="Publicação de Light no Instagram" loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture"></iframe></div></div>
+        <div class="ig-frame"><a class="ig-cover" href="https://www.instagram.com/p/DdewbKfIBdt/" target="_blank" rel="noopener" aria-label="Assistir o reel da Light no Instagram"><img src="./posts/post-02.jpg" alt="Estrutura de palco com iluminação azul e público em evento produzido pela Light" loading="lazy"><b class="ig-play" aria-hidden="true"></b></a></div>
         <figcaption><span><b>Light</b>Reel</span><a href="https://www.instagram.com/p/DdewbKfIBdt/" target="_blank" rel="noopener">Abrir no Instagram <span aria-hidden="true">↗</span></a></figcaption>
       </figure>
       <figure class="ig rv" style="--d:0.10s">
