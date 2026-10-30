@@ -205,10 +205,16 @@ em{font-style:italic}
 /* publicações nas redes (formato do relatório JHSF) */
 .reels{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 24px;margin-top:clamp(56px,7vw,88px)}
 .reels .p{max-width:44ch}
-.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:24px;align-items:start}
-.ig{min-width:0;display:flex;justify-content:center}
-.ig .instagram-media{margin:0!important;min-width:0!important;width:100%!important;max-width:540px!important;border:0!important;padding:0!important;background:transparent!important;box-shadow:none!important}
-.ig iframe.instagram-media{background:var(--osso)!important;border:1px solid var(--line-light)!important;border-radius:0!important}
+.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 24px;margin-top:24px}
+.ig{display:flex;flex-direction:column;gap:14px;min-width:0}
+.ig-frame{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--grafite)}
+.ig-frame iframe{position:absolute;left:0;top:-55px;width:100%;height:calc(100% + 420px);border:0;display:block}
+.ig figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:12px;border-top:1px solid var(--line-light)}
+.ig figcaption span{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--on-light-soft)}
+.ig figcaption b{display:block;font-family:var(--display);font-size:22px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--grafite);margin-bottom:4px}
+.ig figcaption a{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--couro);white-space:nowrap;border-bottom:1px solid transparent;transition:border-color .2s}
+.ig figcaption a:hover{border-color:var(--couro)}
+.ig figcaption a:focus-visible{outline:2px solid var(--couro);outline-offset:3px}
 .reel{position:relative;display:block;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--grafite-2);text-decoration:none}
 .reel img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;transition:transform 1s var(--ease)}
 .reel:hover img{transform:scale(1.06)}
@@ -510,36 +516,30 @@ em{font-style:italic}
       <p class="p rv">Publicações criadas pela Light para os perfis dos clientes. Dê o play direto aqui.</p>
     </div>
     <div class="rgrid">
-      <div class="ig rv" style="--d:0.00s">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNjUZCCh8l5/?utm_source=ig_embed" data-instgrm-version="14">
-          <a class="reel" href="https://www.instagram.com/p/DNjUZCCh8l5/" target="_blank" rel="noopener" aria-label="Ver a publicação 1 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
-        </blockquote>
-      </div>
-      <div class="ig rv" style="--d:0.05s">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdewbKfIBdt/?utm_source=ig_embed" data-instgrm-version="14">
-          <a class="reel" href="https://www.instagram.com/p/DdewbKfIBdt/" target="_blank" rel="noopener" aria-label="Ver a publicação 2 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
-        </blockquote>
-      </div>
-      <div class="ig rv" style="--d:0.10s">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNqUwLWN2qA/?utm_source=ig_embed" data-instgrm-version="14">
-          <a class="reel" href="https://www.instagram.com/p/DNqUwLWN2qA/" target="_blank" rel="noopener" aria-label="Ver a publicação 3 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
-        </blockquote>
-      </div>
-      <div class="ig rv" style="--d:0.15s">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DbB9O-HFudq/?utm_source=ig_embed" data-instgrm-version="14">
-          <a class="reel" href="https://www.instagram.com/p/DbB9O-HFudq/?img_index=2" target="_blank" rel="noopener" aria-label="Ver a publicação 4 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
-        </blockquote>
-      </div>
-      <div class="ig rv" style="--d:0.20s">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DLvoLj8y_vL/?utm_source=ig_embed" data-instgrm-version="14">
-          <a class="reel" href="https://www.instagram.com/p/DLvoLj8y_vL/?img_index=1" target="_blank" rel="noopener" aria-label="Ver a publicação 5 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
-        </blockquote>
-      </div>
-      <div class="ig rv" style="--d:0.25s">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DcV1T96tbs5/?utm_source=ig_embed" data-instgrm-version="14">
-          <a class="reel" href="https://www.instagram.com/p/DcV1T96tbs5/" target="_blank" rel="noopener" aria-label="Ver a publicação 6 no Instagram"><b class="play" aria-hidden="true"></b><span><small>Instagram</small>Ver publicação</span></a>
-        </blockquote>
-      </div>
+      <figure class="ig rv" style="--d:0.00s">
+        <div class="ig-frame"><iframe src="https://www.instagram.com/p/DNjUZCCh8l5/embed/" title="Publicação de Longines SP Horse Show no Instagram" loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture"></iframe></div>
+        <figcaption><span><b>Longines SP Horse Show</b>Reel</span><a href="https://www.instagram.com/p/DNjUZCCh8l5/" target="_blank" rel="noopener">Abrir no Instagram <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
+      <figure class="ig rv" style="--d:0.05s">
+        <div class="ig-frame"><iframe src="https://www.instagram.com/p/DdewbKfIBdt/embed/" title="Publicação de Light no Instagram" loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture"></iframe></div>
+        <figcaption><span><b>Light</b>Reel</span><a href="https://www.instagram.com/p/DdewbKfIBdt/" target="_blank" rel="noopener">Abrir no Instagram <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
+      <figure class="ig rv" style="--d:0.10s">
+        <div class="ig-frame"><iframe src="https://www.instagram.com/p/DNqUwLWN2qA/embed/" title="Publicação de Longines SP Horse Show no Instagram" loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture"></iframe></div>
+        <figcaption><span><b>Longines SP Horse Show</b>Reel</span><a href="https://www.instagram.com/p/DNqUwLWN2qA/" target="_blank" rel="noopener">Abrir no Instagram <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
+      <figure class="ig rv" style="--d:0.15s">
+        <div class="ig-frame"><iframe src="https://www.instagram.com/p/DbB9O-HFudq/embed/" title="Publicação de CBH no Instagram" loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture"></iframe></div>
+        <figcaption><span><b>CBH</b>Carrossel</span><a href="https://www.instagram.com/p/DbB9O-HFudq/?img_index=2" target="_blank" rel="noopener">Abrir no Instagram <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
+      <figure class="ig rv" style="--d:0.20s">
+        <div class="ig-frame"><iframe src="https://www.instagram.com/p/DLvoLj8y_vL/embed/" title="Publicação de CBH no Instagram" loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture"></iframe></div>
+        <figcaption><span><b>CBH</b>Carrossel</span><a href="https://www.instagram.com/p/DLvoLj8y_vL/?img_index=1" target="_blank" rel="noopener">Abrir no Instagram <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
+      <figure class="ig rv" style="--d:0.25s">
+        <div class="ig-frame"><iframe src="https://www.instagram.com/p/DcV1T96tbs5/embed/" title="Publicação de CBH e Time Brasil no Instagram" loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture"></iframe></div>
+        <figcaption><span><b>CBH e Time Brasil</b>Reel</span><a href="https://www.instagram.com/p/DcV1T96tbs5/" target="_blank" rel="noopener">Abrir no Instagram <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -805,6 +805,5 @@ em{font-style:italic}
   setTimeout(function(){ [].forEach.call(document.querySelectorAll('#inicio .rv'),function(el){ el.classList.add('in'); }); },30);
 })();
 </script>
-<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
